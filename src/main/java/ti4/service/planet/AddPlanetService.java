@@ -246,9 +246,7 @@ public class AddPlanetService {
                                             + Mapper.getPlanet(planet).getName() + ".");
                         }
                         if (player_.isRealPlayer()
-                                && List.of(0, player_.numberOfFakePlanetsAllianceMode())
-                                        .contains(
-                                                player_.getPlanetsAllianceMode().size())
+                                && player_.numberOfRealPlanetsAllianceMode() == 0
                                 && CheckUnitContainmentService.getTilesContainingPlayersUnits(
                                                 game, player_, UnitType.Infantry, UnitType.Mech, UnitType.Spacedock)
                                         .isEmpty()) {

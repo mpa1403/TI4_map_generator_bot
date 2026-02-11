@@ -214,11 +214,18 @@ public class Player extends PlayerProperties {
                 .count();
     }
 
-    public int numberOfFakePlanetsAllianceMode() {
+    public int numberOfFakePlanets() {
+        return (int) getPlanets().stream()
+                .map(planet -> game.getPlanetsInfo().get(planet))
+                .filter(planet -> planet.getPlanetModel().getPlanetTypes().contains(PlanetType.FAKE))
+                .count();
+    }
+
+    public int numberOfRealPlanetsAllianceMode() {
         return (int) getPlanetsAllianceMode().stream()
                 .map(planet -> game.getPlanetsInfo().get(planet))
                 .filter(Objects::nonNull)
-                .filter(planet -> planet.getPlanetModel().getPlanetTypes().contains(PlanetType.FAKE))
+                .filter(planet -> !planet.getPlanetModel().getPlanetTypes().contains(PlanetType.FAKE))
                 .count();
     }
 
