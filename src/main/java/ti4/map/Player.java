@@ -214,7 +214,7 @@ public class Player extends PlayerProperties {
                 .count();
     }
 
-    public int numberOfFakePlanets() {
+    public int numberOfFakePlanetsAllianceMode() {
         return (int) getPlanetsAllianceMode().stream()
                 .map(planet -> game.getPlanetsInfo().get(planet))
                 .filter(planet -> planet.getPlanetModel().getPlanetTypes().contains(PlanetType.FAKE))
