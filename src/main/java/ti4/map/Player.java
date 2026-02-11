@@ -215,7 +215,15 @@ public class Player extends PlayerProperties {
     }
 
     public int numberOfFakePlanets() {
-        return (int) getPlanets().stream()
+        List<String> newPlanets = new ArrayList<>(getPlanets());
+        if (!"".equalsIgnoreCase(getAllianceMembers())) {
+            for (Player player2 : game.getRealPlayers()) {
+                if (getAllianceMembers().contains(player2.getFaction())) {
+                    newPlanets.addAll(player2.getPlanets());
+                }
+            }
+        }
+        return (int) newPlanets.stream()
                 .map(planet -> game.getPlanetsInfo().get(planet))
                 .filter(planet -> planet.getPlanetModel().getPlanetTypes().contains(PlanetType.FAKE))
                 .count();
