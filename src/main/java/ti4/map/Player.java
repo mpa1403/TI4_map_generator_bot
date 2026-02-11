@@ -207,6 +207,7 @@ public class Player extends PlayerProperties {
         return singularities;
     }
 
+    @JsonIgnore
     public int getNumberOfRealPlanetsAllianceMode() {
         return (int) getPlanetsAllianceMode().stream()
                 .map(planet -> game.getPlanetsInfo().get(planet))
