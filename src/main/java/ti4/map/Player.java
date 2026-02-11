@@ -226,6 +226,7 @@ public class Player extends PlayerProperties {
                 .map(planet -> game.getPlanetsInfo().get(planet))
                 .filter(Objects::nonNull)
                 .filter(planet -> !planet.getPlanetModel().getPlanetTypes().contains(PlanetType.FAKE))
+                .filter(planet -> !planet.isSpaceStation())
                 .count();
     }
 
